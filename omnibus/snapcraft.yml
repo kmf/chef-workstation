@@ -1,0 +1,44 @@
+name: kmf-chef-workstation
+version: "0.9.42"
+summary: Chef Workstation
+description: |
+  Everything you need to start with All things Chef
+
+confinement: devmode
+base: core18
+
+parts:
+  kmf-chef-workstation:
+    source: .
+    plugin: ruby
+    gems:
+      - rake
+      - bundler
+    override-build: |
+      snapcraftctl build
+      rake install
+    build-packages:
+      - git
+apps:
+  kmf-chef-workstation:
+    command: bin/chef
+    command: bin/chef-apply
+    command: bin/chef-client
+    command: bin/chef-resource-inspector
+    command: bin/chef-run
+    command: bin/chef-service-manager
+    command: bin/chef-shell
+    command: bin/chef-solo
+    command: bin/chef-vault
+    command: bin/chef-windows-service
+    command: bin/cookstyle
+    command: bin/delivery
+    command: bin/foodcritic
+    command: bin/inspec
+    command: bin/kitchen
+    command: bin/knife
+    command: bin/ohai
+    command: bin/print_execution_environment
+    command: bin/push-apply
+    command: bin/pushy-client
+    command: bin/pushy-service-manager
